@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./gandhi-captain.css" />
+    <title>Gandhi House Captain Voting</title>
+</head>
+<body>
+    <center>
+        <h1>Gandhi House Captain</h1>
+    </center>
+    <div class="child-container">
+        <div class="child-box">
+            <img class="child-image" src="./public/gandhi person 1.PNG">
+            <div class="child-name">Akshat Tiwari</div>
+            <a class="vote-button" href="./gandhi-v.html" data-id="g_c_person1">Vote</a>
+        </div>
+        <div class="child-box">
+            <img class="child-image" src="./public/gandhi person 1.PNG">
+            <div class="child-name">Yahvi Sharma</div>
+            <a class="vote-button" href="./gandhi-v.html" data-id="g_c_person2">Vote</a>
+        </div>
+        <div class="child-box">
+            <img class="child-image" src="./public/gandhi person 1.PNG">
+            <div class="child-name">Annay Vats</div>
+            <a class="vote-button" href="./gandhi-v.html" data-id="g_c_person3">Vote</a>
+        </div>
+        <div class="child-box">
+            <img class="child-image" src="./public/gandhi person 1.PNG">
+            <div class="child-name">Sarshwat Srestha</div>
+            <a class="vote-button" href="./gandhi-v.html" data-id="g_c_person4">Vote</a>
+        </div>
+
+        <div class="child-box">
+            <img class="child-image" src="./public/gandhi person 1.PNG">
+            <div class="child-name">Vidhi Verma</div>
+            <a class="vote-button" href="./gandhi-v.html" data-id="g_c_person5">Vote</a>
+        </div>
+
+    </div>
+	
+    <script>
+        // Add event listeners to Vote buttons
+        var voteButtons = document.querySelectorAll(".vote-button");
+        for (var i = 0; i < voteButtons.length; i++) {
+            voteButtons[i].addEventListener("click", function(e) {
+                e.preventDefault();
+                var buttonId = this.getAttribute("data-id");
+                increaseVoteCount(buttonId);
+                window.location.href = this.getAttribute("href");
+            });
+        }
+
+        function increaseVoteCount(buttonId) {
+            // Check if the vote count for the button exists in local storage
+            if (localStorage.getItem(buttonId)) {
+                // If exists, increment the vote count by 1
+                var count = parseInt(localStorage.getItem(buttonId));
+                localStorage.setItem(buttonId, count + 1);
+            } else {
+                // If doesn't exist, set the vote count to 1
+                localStorage.setItem(buttonId, 1);
+            }
+        }
+    </script>
+</body>
+</html>

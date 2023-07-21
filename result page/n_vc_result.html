@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vote Counts</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: black;
+            color: white;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+        }
+        
+        th {
+            background-color: #333;
+            font-weight: bold;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: #555;
+        }
+
+        body {
+            background-color: black;
+        }
+       
+    </style>
+</head>
+<body>
+    <h1>Vote Counts</h1>
+    <table id="voteCounts">
+        <tr>
+            <th>Name</th>
+            <th>Votes</th>
+        </tr>
+    </table>
+    <script>
+        // Retrieve the vote counts from local storage and display them
+        var voteCounts = document.getElementById("voteCounts");
+        var names = ["Riddhi Roy", "Anhad Singh Bansal","Yanik Kumar", "Ivan William", "Pehu Agarwal", "Hiti Yadav", "Rakshita Sharma", "Shatakshi Pandey", "Drishtii Goyal"];
+        for (var i = 0; i < names.length; i++) {
+            var buttonId = "n_vc_person" + (i + 1);
+            var count = localStorage.getItem(buttonId);
+            var row = voteCounts.insertRow();
+            var nameCell = row.insertCell(0);
+            var countCell = row.insertCell(1);
+            nameCell.textContent = names[i];
+            countCell.textContent = count ? count : 0;
+        }
+    </script>
+</body>
+</html>
